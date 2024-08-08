@@ -1,14 +1,7 @@
 <?php
-// Define the directory to list files from
 $directory = '.';
-
-// Get an array of files and directories in the specified directory
 $items = scandir($directory);
-
-// Remove '.' and '..' from the array (they represent the current and parent directory)
 $items = array_diff($items, array('.', '..'));
-
-// Start HTML output
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +25,7 @@ $items = array_diff($items, array('.', '..'));
         Files in the PHP Test Site.
     </h1>
     <?php
-     echo "You're currently in the " . dirname(__FILE__) . " directory, Click <a href='../'>here</a> to go back";
+     echo "You're currently in the ".dirname(__FILE__)." directory, Click <a href='../'>here</a> to go back";
     ?>
     <ul>
         <?php
@@ -40,10 +33,10 @@ $items = array_diff($items, array('.', '..'));
         foreach ($items as $item) {
             $path = $directory . '/' . $item;
             if (is_dir($path)) {
-                echo '<li><strong>' . htmlspecialchars($item) . '</strong></li>';
+                echo '<li><strong>'.htmlspecialchars($item).'</strong></li>';
                 echo '<ul>';
                 if ($item === $path) {
-                    echo '<li><a href="' . htmlspecialchars($item) . '">index.php</a></li>';
+                    echo '<li><a href="'.htmlspecialchars($item).'">index.php</a></li>';
                 }
                 else {
                     echo '<li><a href="' . htmlspecialchars($item) . '">' . htmlspecialchars($item) . '</a></li>';
@@ -58,7 +51,6 @@ $items = array_diff($items, array('.', '..'));
     </ul>
     <footer>
         <br><br>
-        <p>Powered by IIS + PHP_FastCGI</p>
         <p>&copy; 2024 Howard Wu</p>
         <p style="font-size: 0.5em;">This website is recommend to be used with Chrome or Firefox </p>
     </footer>
