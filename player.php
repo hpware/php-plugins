@@ -35,14 +35,27 @@ if ($type === "yt") {
         <br>";};
 } elseif ($type === "sptfy") {
     $sptfyID = isset($_GET['id']) ? $_GET["id"] :null;
+    $sptdyTYPEURL = isset($_GET['aop']) ? $_GET['aop'] : null;
+    if ($sptdyTYPEURL === "p") {
+        $sptdyTYPE = "playlist";
+    }elseif ($sptdyTYPEURL === "a") {
+        $sptdyTYPE = "album";
+    }else {
+        $error = "1";
+    }
     if (!$sptfyID) {
         $error = "1";
         }else {
         echo '<h1>Spotify Display</h1>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/'.htmlspecialchars($sptfyID).'?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/'.htmlspecialchars($sptdyTYPE)."/".htmlspecialchars($sptfyID).'?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-            <br>';}
-    else {
+            <br>';};
+} elseif ($type === "img") {
+    $imgID = isset($_GET['img']) ? $_GET['img'] : null;
+    $imgURL = "/" . htmlspecialchars($imgID);
+} elseif ($type === "vid") {
+    $vidID = isset($_GET['id']) ? $_GET["id"] :null;
+} else {
     $error = "1";
 };
 if ($error === "1") {
