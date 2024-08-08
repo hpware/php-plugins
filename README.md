@@ -1,6 +1,6 @@
 # PHP Plugins
 ## Plugin List
-- Viewer.php
+- Player.php
 - Listfiles.php
 - phpinfo.php
 ## Demo 
