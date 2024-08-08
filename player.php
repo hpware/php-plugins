@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-    <title>Viewer</title>    
+    <title>Youtube / Spotify Player</title>    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://hwtw.cc/style.css">
@@ -47,7 +47,7 @@ if ($type === "yt") {
         $error = "1";
         }else {
         echo '<h1>Spotify Display</h1>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/'.htmlspecialchars($sptdyTYPE)."/".htmlspecialchars($sptfyID).'?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/'.htmlspecialchars($sptdyTYPE)."/".htmlspecialchars($sptfyID).'?theme=0" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
             <br>';};
 } elseif ($type === "img") {
@@ -67,7 +67,7 @@ if ($error === "1") {
 </main>
 <footer>
         <br><br>
-        <p>Powered by IIS + PHP_FastCGI</p>
+        <p>Powered by hwtwcc PHP Player</p>
         <p>&copy; 2024 Howard Wu</p>
         <p style="font-size: 0.5em;">This website is recommend to be used with Chrome or Firefox </p>
     </footer>
