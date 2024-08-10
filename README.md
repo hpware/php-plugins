@@ -1,5 +1,6 @@
 # PHP Plugins
 ## Plugin List
+- Photo-Viewer.php
 - Player.php
 - Listfiles.php
 - phpinfo.php
