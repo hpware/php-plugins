@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Photo Library Viewer</title>
@@ -15,7 +15,7 @@
     $not_allowed = array("http", "https", "://", "www.", "ftp.", "ftps.", "//");
     $curl_dc = curl_init("YOUR WEBHOOK HERE");
     // Collect IP address if used http or https to run a image.
-    function getUserIP() {
+    function obtainUserIP() {
         if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
             return $_SERVER['HTTP_CLIENT_IP'];
         } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -24,7 +24,7 @@
             return $_SERVER['REMOTE_ADDR'];
         }
     }
-    $ip = getUserIP();
+    $ip = obtainUserIP();
     foreach ($not_allowed as $word) {
         if (strpos($files, $word) !== false) {
             $error = "2"; 
