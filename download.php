@@ -1,7 +1,7 @@
 <?php 
 $error = "0";
 $not_allowed = array("http", "https", "://", "www.", "ftp.", "ftps.", "//");
-$curl_dc = curl_init("https://discord.com/api/webhooks/1271786861769130036/3ENk5LCxvJXtZxHszE8n2uBHWCXGyIg_qW8Is9kP1ZOk8yzqlXR0fO7AvmtIT79LMPN3");
+$curl_dc = curl_init("YOUR WEBHOOK HERE");
 function obtainUserIP() {
     if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
         return $_SERVER['HTTP_CLIENT_IP'];
