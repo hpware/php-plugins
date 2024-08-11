@@ -21,13 +21,38 @@ if (!$fileURI) {
 }
 foreach ($not_allowed as $word) {
     if (strpos($files, $word) !== false) {
-        $error = "2"; 
+        $error = "2";
     }
 }
-$download = curl_init($file);
-curl_setopt($download, CURLOPT_RETURNTRANSFER, 0);
-curl_setopt($download, CURLOPT_BINARYTRANSFER, 1);
-header('Content-Disposition: attadownloadment; filename="'.basename($file).'"');
-header('Content-Type: application/octet-stream');
-readfile($file);
+        if ($error == "1") {
+            echo "<p id='Display' style='color: red;'></p>";
+        } elseif ($error == "2") {
+         echo "Outside of the Downloadable Range";
+            $message = [
+                'content' => 'Alert! Someone tried to access a file using HTTP or HTTPS. IP address: ' . $ip . ' Tried to access an internet file: ' . $files . "
+                ",
+                'username' => 'PHP Alert Bot',
+            ];
+            $jsonData = json_encode($message);
+            curl_setopt($curl_dc, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl_dc, CURLOPT_POST, true);
+            curl_setopt($curl_dc, CURLOPT_POSTFIELDS, $jsonData);
+            curl_setopt($curl_dc, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+            $response = curl_exec($curl_dc);
+            curl_close($curl_dc);
+        }
+        if ($error === "0" && file_exists($file)) {
+        header('Content-Disposition: attachment; filename="'.basename($file).'"');
+        header('Content-Type: application/octet-stream');
+        header('Content-Length: ' . filesize($file));
+        readfile($file);
+        exit();
+        } else {
+        $error = "3";
+        };
+if ($error == "3") {
+    echo "Error: Unable to download the file.";
+}
+
+
 ?>
