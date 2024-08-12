@@ -25,7 +25,6 @@ if (!$fileURI) {
     foreach ($not_allowed as $word) {
         if (strpos($file, $word) !== false) {
             $error = "2";
-            break; // Stop further processing if not allowed strings are found
         }
     }
 
