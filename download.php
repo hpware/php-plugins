@@ -1,7 +1,7 @@
 <?php 
 $error = "0";
-$not_allowed = array("http", "https", "://", "www.", "ftp.", "ftps.", "//");
-$curl_dc = curl_init("YOUR WEBHOOK HERE");
+$not_allowed = array("http://", "https://", "://", "//");
+$curl_dc = curl_init("YOUR DISCORD WEBHOOK HERE");
 
 function obtainUserIP() {
     if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -25,6 +25,7 @@ if (!$fileURI) {
     foreach ($not_allowed as $word) {
         if (strpos($file, $word) !== false) {
             $error = "2";
+            break; // Stop further processing if not allowed strings are found
         }
     }
 
@@ -45,7 +46,9 @@ if (!$fileURI) {
     }
 
     // Check if the file exists before attempting to download
-    if ($error === "0" && file_exists($file)) {
+    if ($error == "2"){
+        echo "<br>";
+    }elseif ($error === "0" && file_exists($file)) {
         header('Content-Disposition: attachment; filename="' . basename($file) . '"');
         header('Content-Type: application/octet-stream');
         header('Content-Length: ' . filesize($file));
@@ -62,4 +65,5 @@ if ($error == "1") {
     echo "Error: Unable to download the file.";
 }
 ?>
+
 
