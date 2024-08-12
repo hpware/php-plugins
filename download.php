@@ -1,6 +1,6 @@
 <?php 
 $error = "0";
-$not_allowed = array("http://", "https://", "://", "//", "*.php");
+$not_allowed = array("http://", "https://", "://", "//", ".php");
 $curl_dc = curl_init("YOUR DISCORD WEBHOOK HERE");
 
 function obtainUserIP() {
